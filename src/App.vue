@@ -1,26 +1,50 @@
 <template>
-  <div class="todo-app">
-    <h1>To-do List</h1>
-    <input v-model="newTodo" placeholder="Add a new task" @keyup.enter="addTodo" />
-    <button @click="addTodo">Add Task</button>
-    <ul>
-      <li v-for="(todo, index) in todos" :key="index">
-        <span :style="{ textDecoration: todo.completed ? 'line-through' : 'none' }">
-          {{ todo.text }}
-        </span>
-        <button @click="toggleTodo(index)">
-          {{ todo.completed ? 'Undo' : 'Complete' }}
-        </button>
-        <button @click="removeTodo(index)">Delete</button>
-      </li>
-    </ul>
-  </div>
+  <AppLayout>
+    <!-- Itt a to-do list tartalma, amit korábban az App.vue-ba tettünk -->
+    <div class="todo-app">
+      <h2>Your To-dos</h2>
+      <ul class="list-group">
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+          v-for="(todo, index) in todos"
+          :key="index"
+        >
+          <span :style="{ textDecoration: todo.completed ? 'line-through' : 'none' }">
+            {{ todo.text }}
+          </span>
+          <div>
+            <button class="btn btn-secondary btn-sm" @click="toggleTodo(index)">
+              {{ todo.completed ? 'Undo' : 'Complete' }}
+            </button>
+            <button class="btn btn-danger btn-sm" @click="removeTodo(index)">Delete</button>
+          </div>
+        </li>
+      </ul>
+      <div class="input-group mt-3">
+        <input
+          v-model="newTodo"
+          type="text"
+          class="form-control"
+          placeholder="Add a new task"
+          @keyup.enter="addTodo"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-primary" @click="addTodo">Add Task</button>
+        </div>
+      </div>
+    </div>
+  </AppLayout>
 </template>
 
 <script>
+import AppLayout from './components/AppLayout.vue';
 import { ref } from 'vue';
 
 export default {
+  name: "App",
+  components: {
+    AppLayout,
+  },
   setup() {
     const todos = ref([]);
     const newTodo = ref('');
@@ -45,37 +69,15 @@ export default {
       newTodo,
       addTodo,
       removeTodo,
-      toggleTodo
+      toggleTodo,
     };
-  }
+  },
 };
 </script>
 
 <style scoped>
 .todo-app {
-  max-width: 400px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-}
-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-ul {
-  list-style: none;
-  padding: 0;
-}
-li {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 0;
 }
 </style>
-
-
-
-
-
