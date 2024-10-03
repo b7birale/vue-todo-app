@@ -1,6 +1,6 @@
 <template>
-  <div style="margin-bottom: 20px;">
-    <input v-model="newTodo" placeholder="Add new task" />
+  <div style="margin-bottom: 20px; margin-top:30px;">
+    <input style="padding-left: 5px;" v-model="newTodo" placeholder="Add new task" />
     <button @click="submitTodo">Add Task</button>
   </div>
 </template>
