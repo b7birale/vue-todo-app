@@ -1,6 +1,12 @@
 import { createApp } from 'vue';
-import App from './App.vue'; // A fő Vue komponens betöltése
-//import './assets/styles.css'; // CSS betöltése
+import App from './App.vue';
+import router from './router';
+import { createPinia } from 'pinia'; // Pinia importálása
 import 'bootstrap/dist/css/bootstrap.min.css'; //Bootstrap betöltése
 
-createApp(App).mount('#app');
+const app = createApp(App);
+
+app.use(router);
+app.use(createPinia()); // Pinia hozzáadása
+app.mount('#app');
+
