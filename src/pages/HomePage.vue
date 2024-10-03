@@ -1,6 +1,6 @@
 <template>
   <AppLayout>
-    <h1>Todo App</h1>
+    <h1 class="text-center">To-Do App</h1>
     <NewTodo @add-todo="createTodo" />
     <TodoList :todos="todos" @delete-todo="deleteTodo" @mark-done="toggleTodoDone" />
   </AppLayout>
@@ -49,9 +49,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-h1 {
-  text-align: center;
-}
-</style>

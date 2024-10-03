@@ -8,6 +8,3 @@ export default {
 };
 </script>
 
-<style>
-/* Ide jöhet a stílus, ha szükséges */
-</style>

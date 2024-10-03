@@ -1,7 +1,7 @@
 <template>
   <footer class="bg-dark text-white text-center py-3">
     <div class="container">
-      <p>&copy; 2024 Todo App</p>
+      <p class="m-0">&copy; 2024 To-Do App</p>
     </div>
   </footer>
 </template>
@@ -11,9 +11,3 @@ export default {
   name: "AppFooter",
 };
 </script>
-
-<style scoped>
-p {
-  margin: 0;
-}
-</style>
