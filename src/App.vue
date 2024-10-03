@@ -2,7 +2,7 @@
   <AppLayout>
     <!-- Itt a to-do list tartalma, amit korábban az App.vue-ba tettünk -->
     <div class="todo-app">
-      <h2>Your To-dos</h2>
+      <h2>Your To Do List</h2>
       <ul class="list-group">
         <li
           class="list-group-item d-flex justify-content-between align-items-center"
