@@ -10,16 +10,16 @@
   </ul>
 </template>
 
-<script>
-export default {
-  name: 'TodoList',
-  props: {
-    todos: {
-      type: Array,
-      required: true,
-    },
-  },
-};
+<script setup lang="ts">
+import { TodoDTO } from "../store/todoStore";
+
+defineProps<{
+  todos: {
+    type: TodoDTO[],
+    required: true
+  }
+}>();
+
 </script>
 
 <style scoped>
@@ -30,7 +30,6 @@ export default {
 .todo-list li {
   margin: 5px 0;
   padding: 10px;
-  background-color: #f0f0f0;
   border-radius: 5px;
   display: flex;
   justify-content: space-between;

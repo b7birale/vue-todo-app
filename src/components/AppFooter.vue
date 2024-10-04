@@ -6,8 +6,5 @@
   </footer>
 </template>
 
-<script>
-export default {
-  name: "AppFooter",
-};
+<script setup lang="ts">
 </script>

@@ -5,23 +5,18 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'NewTodo',
-  data() {
-    return {
-      newTodo: '',
-    };
-  },
-  methods: {
-    submitTodo() {
-      if (this.newTodo) {
-        this.$emit('add-todo', this.newTodo);
-        this.newTodo = ''; // Reset input after submission
-      }
-    },
-  },
-};
+<script setup lang="ts">
+  
+  let newTodo = '';
+
+  const emit = defineEmits(['add-todo']);
+
+  const submitTodo = () => {
+    if (newTodo) {
+      emit('add-todo', newTodo);
+      newTodo = '';
+    }
+  };
 </script>
 
 

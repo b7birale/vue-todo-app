@@ -6,46 +6,30 @@
   </AppLayout>
 </template>
 
-<script>
+<script setup lang="ts">
 import { useTodoStore } from '../store/todoStore'; // Pinia store importálása
 import NewTodo from '../components/NewTodo.vue';
 import TodoList from '../components/TodoList.vue';
 import AppLayout from '../components/AppLayout.vue';
 import { computed } from 'vue';
 
-export default {
-  name: 'HomePage',
-  components: {
-    NewTodo,
-    TodoList,
-    AppLayout,
-  },
-  setup() {
-    const todoStore = useTodoStore();
+const todoStore = useTodoStore();
 
-    // A store state-hez való hozzáférés
-    const todos = computed(() => todoStore.getTodos());
+// A store state-hez való hozzáférés
+const todos = computed(() => todoStore.getTodos());
 
-    // CRUD műveletek hívása a store-on keresztül
-    const createTodo = (todo) => {
-      todoStore.createTodo(todo);
-    };
-
-    const deleteTodo = (index) => {
-      todoStore.deleteTodo(index);
-    };
-
-    const toggleTodoDone = (index) => {
-      const todo = todoStore.todos[index];
-      todoStore.updateTodo(index, { ...todo, done: !todo.done });
-    };
-
-    return {
-      todos,
-      createTodo,
-      deleteTodo,
-      toggleTodoDone,
-    };
-  },
+// CRUD műveletek hívása a store-on keresztül
+const createTodo = (todo) => {
+  todoStore.createTodo(todo);
 };
+
+const deleteTodo = (index) => {
+  todoStore.deleteTodo(index);
+};
+
+const toggleTodoDone = (index) => {
+  const todo = todoStore.todos[index];
+  todoStore.updateTodo(index, { ...todo, done: !todo.done });
+};
+
 </script>

@@ -8,15 +8,8 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import AppHeader from './AppHeader.vue';
 import AppFooter from './AppFooter.vue';
 
-export default {
-  name: "AppLayout",
-  components: {
-    AppHeader,
-    AppFooter,
-  },
-};
 </script>
