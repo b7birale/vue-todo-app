@@ -25,6 +25,9 @@ Example: todoStore.createTodo, todoStore.getTodos() -> return with the list of t
 const todoStore = useTodoStore();
 
 // Access to store state
+/* **computed()** is a function that allows you to create derived data that automatically updates when
+the data associated with it changes. **computed()** is cached by default, which means it only
+updates itself when its associated dependencies change. */
 const todos = computed(() => todoStore.getTodos());
 
 const deleteTodo = (index: number) => {
