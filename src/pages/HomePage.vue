@@ -13,7 +13,6 @@
 import { useTodoStore } from '../store/todoStore'; // Import Pinia store
 import NewTodo from '../components/NewTodo.vue';
 import TodoList from '../components/TodoList.vue';
-import AppLayout from '../components/AppLayout.vue';
 import { computed } from 'vue';
 
 /*
