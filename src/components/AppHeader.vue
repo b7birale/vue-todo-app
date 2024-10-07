@@ -6,8 +6,4 @@
   </header>
 </template>
 
-<script>
-export default {
-  name: "AppHeader",
-};
-</script>
+<script  setup lang="ts"></script>

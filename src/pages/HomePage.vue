@@ -2,50 +2,48 @@
   <AppLayout>
     <h1 class="text-center">To-Do App</h1>
     <NewTodo @add-todo="createTodo" />
+    <!--
+      :todos="todos" means that the tasks are passed to the component from the variable called todos.
+    -->
     <TodoList :todos="todos" @delete-todo="deleteTodo" @mark-done="toggleTodoDone" />
   </AppLayout>
 </template>
 
-<script>
-import { useTodoStore } from '../store/todoStore'; // Pinia store importálása
+<script setup lang="ts">
+import { useTodoStore } from '../store/todoStore'; // Import Pinia store
 import NewTodo from '../components/NewTodo.vue';
 import TodoList from '../components/TodoList.vue';
 import AppLayout from '../components/AppLayout.vue';
 import { computed } from 'vue';
 
-export default {
-  name: 'HomePage',
-  components: {
-    NewTodo,
-    TodoList,
-    AppLayout,
-  },
-  setup() {
-    const todoStore = useTodoStore();
+/*
+Call useTodoStore() method that is definied in store/todoStore.js
+This cointains the list of existing todos and all the CRUD methods.
+Therefore, from this point you can call any of the methods using the variable todoStore (that is definied here)
+Example: todoStore.createTodo, todoStore.getTodos() -> return with the list of the tasks
+*/
+const todoStore = useTodoStore();
 
-    // A store state-hez való hozzáférés
-    const todos = computed(() => todoStore.getTodos());
+// Access to store state
+const todos = computed(() => todoStore.getTodos());
 
-    // CRUD műveletek hívása a store-on keresztül
-    const createTodo = (todo) => {
-      todoStore.createTodo(todo);
-    };
-
-    const deleteTodo = (index) => {
-      todoStore.deleteTodo(index);
-    };
-
-    const toggleTodoDone = (index) => {
-      const todo = todoStore.todos[index];
-      todoStore.updateTodo(index, { ...todo, done: !todo.done });
-    };
-
-    return {
-      todos,
-      createTodo,
-      deleteTodo,
-      toggleTodoDone,
-    };
-  },
+const deleteTodo = (index: number) => {
+  todoStore.deleteTodo(index);
 };
+
+const createTodo = (text: string) => {
+todoStore.createTodo(text);
+};
+
+//toggle means "kapcsoló" in Hunagrian
+/*
+{ ...todo, done: !todo.done } It makes a brand new Todo object
+... is the spread opreator. It expand all the properties of an object inside another object.
+*/
+const toggleTodoDone = (index: number) => {
+  const todo = todoStore.todos[index];
+  todoStore.updateTodo(index, { ...todo, done: !todo.done });
+};
+
+
 </script>
