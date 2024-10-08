@@ -25,11 +25,16 @@ only in the HomePage.vue
 const emit = defineEmits(['add-todo']) 
 
 const submitTodo = () => {
-  if (newTodoText.value) {
-    emit('add-todo', newTodoText.value);
+  if (newTodoText.value.trim()) {
+    emit('add-todo', newTodoText.value.trim());
     newTodoText.value  = ''; // Reset input after submission
   }
+
+   // Clear input even if the content is invalid (whitespace only)
+   newTodoText.value = ''; // Reset input after submission or invalid entry
+  
 }
+
 </script>
 
 
